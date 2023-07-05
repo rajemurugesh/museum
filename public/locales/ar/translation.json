@@ -1,5 +1,6 @@
 {
-    "welcome": "مرحباً",
-    "goodbye": "مع السلامة",
-    "editLine": "قم بتحرير <code> src / App.js </code> وحفظها لإعادة التحميل"
-}
+    "About us page": "صفحة من نحن",
+    "What is i18next?": "ما هو i18next؟",
+    "i18next is an internationalization framework that has been written for JavaScript.": "i18next هو إطار للتعدد الثقافات يمكن كتابته بلغة JavaScript."
+  }
+  

@@ -1,37 +1,40 @@
-import logo from "./logo.svg";
 import "./App.css";
 
-import { useTranslation } from "react-i18next";
-
-// import Headerbar from './Components/Headerbar';
-// import Body from './Components/Body';
+import { I18nextProvider } from "react-i18next";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import Header from "./Components/Header";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import Home from "./Components/Home";
+import Error from "./Components/Error";
+import i18n from "./i18n";
 
 function App() {
-  const { t, i18n } = useTranslation();
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{t("editLine")}</p>
-        <select onChange={(e) => i18n.changeLanguage(e.target.value)}>
-          <option>Choose Language</option>
-          <option value="ar">Arabic</option>
-          <option value="ru">Russian</option>
-          <option value="en">English</option>
-        </select>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("welcome")}
-          <br />
-          {t("goodbye")}
-        </a>
-      </header>
-    </div>
+  return(
+    <I18nextProvider i18n={i18n}>
+    <Header />
+    <RouterProvider router={router}/>
+    
+    </I18nextProvider>
   );
+  
 }
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route> 
+      <Route path="/" element={<Home />}/>
+      <Route path="/about" element={<About />}/>
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/error" element={<Error/>}/>
+
+    </Route>
+  )
+)
+
+
+
+
 
 export default App;

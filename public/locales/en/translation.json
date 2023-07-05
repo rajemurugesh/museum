@@ -1,5 +1,4 @@
- {
-        "welcome": "Welcome",
-        "goodbye": "Goodbye",
-        "editLine": "Edit <code>src/App.js</code> and save to reload."
-    }
+{
+    "selectMuseum":"Select Museum:"
+    
+}
