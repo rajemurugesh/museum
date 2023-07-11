@@ -1,13 +1,21 @@
-import React from 'react'
-import "./App.css";
-import Searchbar from './Components/Searchbar';
-import BookData from './mock-data.json';
+import addNotification from 'react-push-notification';
+import { Notifications } from 'react-push-notification';
 function App() {
-  return (
-    <div className='App'>
-      <Searchbar placeholder="Type Here to Search..." data={BookData}/>
-      </div>
-  )
+function buttonOnClick (){
+	addNotification({
+	title: 'Success',
+	native:true		
+	})
+};
+return (
+	<div className="App">
+	<Notifications />
+	<h1>Hello World!</h1>
+	<button onClick={buttonOnClick}>
+		Push Notification
+	</button>
+	</div>
+);
 }
 
-export default App
+export default App;
