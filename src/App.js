@@ -1,55 +1,34 @@
-import React, { useState } from "react";
-import { Notifications } from 'react-push-notification';
-import addNotification from 'react-push-notification';
+import React from 'react';
 
-function App() {
-const [name,setName] = useState("");
 
-function warningNotification (){
-	addNotification({
-	title: 'Warning',
-	subtitle: 'Please fill it',
-	message: 'You have to enter name',
-	theme: 'red',
-	closeButton:"X",
-	})
-};
-
-function successNotification (){
-	addNotification({
-	title: 'Success',
-	subtitle: 'You have successfully submitted',
-	message: 'Welcome to Museum Application',
-	theme: 'light',
-	closeButton:"X",
-	backgroundTop:"green",
-	backgroundBottom:"yellowgreen"
-	})
-};
-
-function handleSubmit(e){
-	e.preventDefault();
-	if(name === "")
-	warningNotification();
-	else
-	successNotification()
-}
-
-return (
-	<div className="App">
-	<Notifications />
-	<h1>Guide App</h1>
-	<form >
-		<label>Name:</label>
-		<input name="name" value={name}
-		onChange={(e) => setName(e.target.value)}
+export default function App() {
+  return (
+	<div>
+		<h1>Images from Local</h1>
+		<img src='Assets/sma1.jpg' alt="sma1"
+		style={{
+			display: 'grid',
+			position: 'relative',
+			placeItems: 'center',
+			width: '50vw',
+          height: '50vh',
+          borderRadius: '5%',
+      
+		}}
 		/>
-		<button onClick={handleSubmit}
-		type="submit">Submit
-		</button>
-	</form>
-	</div>
-);
+		<div>
+			<h1>Images from URL</h1>
+			<img src="https://cdn.pixabay.com/photo/2013/04/11/19/46/building-102840_1280.jpg" alt="building"
+			style={{
+				display: 'grid',
+			position: 'relative',
+			placeItems: 'center',
+			width: '50vw',
+          height: '50vh',
+          borderRadius: '5%',
+			}}
+			/>
+		</div>
+		</div>
+  )
 }
-
-export default App;
