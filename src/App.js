@@ -1,51 +1,45 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import Heading from './Components/Heading';
-import Loading from './Components/Loading';
-import UnsplashImage from './Components/UnsplashImage';
-import axios from 'axios';
-import InfiniteScroll from 'react-infinite-scroll-component';
-
-export default function App() {
-  const [images, setImages] = useState([]);
-
-  const fetchImages = useCallback((count = 10) => {
-    const apiRoot = "https://api.unsplash.com";
-    const accessKey = process.env.REACT_APP_ACCESSKEY;
-
-    axios
-      .get(`${apiRoot}/photos/random?client_id=${accessKey}&count=${count}`)
-      .then(res => {
-        setImages(prevImages => [...prevImages, ...res.data]);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    // curl https://api.unsplash.com/photos/random?count=5
-  }, []);
-
+import React, { useState, useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
+import "./App.css";
+const App = () => {
+  const [data, setData] = useState([]);
+  const [skip, setSkip] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
   useEffect(() => {
-    fetchImages();
-  }, [fetchImages]);
-
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const response = await axios.get(
+      `https://dummyjson.com/comments?limit=10&skip=${skip}&select=body,postId`
+    );
+    if (response.data.comments.length > 0) {
+      setData(data.concat(response.data.comments));
+      setSkip(skip + 10);
+    } else {
+      setHasMore(false);
+    }
+  };
   return (
-    <div className="container-fluid">
-      <Heading />
-      <Loading />
-      <InfiniteScroll
-        dataLength={images.length}
-        next={fetchImages}
-        hasMore={true}
-        loader={<Loading />}
-      >
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {images.map(image => (
-            <div className="col" key={image.id}>
-              <UnsplashImage url={image.urls.thumb} />
-            </div>
-          ))}
-        </div>
-      </InfiniteScroll>
+    <div>
+        <h1>INFINITE SCROLL</h1>
+        <InfiniteScroll
+      dataLength={data.length}
+      next={fetchData}
+      hasMore={hasMore}
+      loader={<h4>Loading...</h4>}
+    >
+      {data.map((item) => {
+        return (
+          <div className="card" key={item.id}>
+            <h4>Comment for postId: {item.postId}</h4>
+            <p>{item.body}</p>
+          </div>
+        );
+      })}
+    </InfiniteScroll>
     </div>
+    
   );
-}
+};
+export default App;
