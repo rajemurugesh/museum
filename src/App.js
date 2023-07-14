@@ -1,34 +1,51 @@
-import React from 'react';
-
+import React, { useEffect, useState, useCallback } from 'react';
+import Heading from './Components/Heading';
+import Loading from './Components/Loading';
+import UnsplashImage from './Components/UnsplashImage';
+import axios from 'axios';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function App() {
+  const [images, setImages] = useState([]);
+
+  const fetchImages = useCallback((count = 10) => {
+    const apiRoot = "https://api.unsplash.com";
+    const accessKey = process.env.REACT_APP_ACCESSKEY;
+
+    axios
+      .get(`${apiRoot}/photos/random?client_id=${accessKey}&count=${count}`)
+      .then(res => {
+        setImages(prevImages => [...prevImages, ...res.data]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    // curl https://api.unsplash.com/photos/random?count=5
+  }, []);
+
+  useEffect(() => {
+    fetchImages();
+  }, [fetchImages]);
+
   return (
-	<div>
-		<h1>Images from Local</h1>
-		<img src='Assets/sma1.jpg' alt="sma1"
-		style={{
-			display: 'grid',
-			position: 'relative',
-			placeItems: 'center',
-			width: '50vw',
-          height: '50vh',
-          borderRadius: '5%',
-      
-		}}
-		/>
-		<div>
-			<h1>Images from URL</h1>
-			<img src="https://cdn.pixabay.com/photo/2013/04/11/19/46/building-102840_1280.jpg" alt="building"
-			style={{
-				display: 'grid',
-			position: 'relative',
-			placeItems: 'center',
-			width: '50vw',
-          height: '50vh',
-          borderRadius: '5%',
-			}}
-			/>
-		</div>
-		</div>
-  )
+    <div className="container-fluid">
+      <Heading />
+      <Loading />
+      <InfiniteScroll
+        dataLength={images.length}
+        next={fetchImages}
+        hasMore={true}
+        loader={<Loading />}
+      >
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {images.map(image => (
+            <div className="col" key={image.id}>
+              <UnsplashImage url={image.urls.thumb} />
+            </div>
+          ))}
+        </div>
+      </InfiniteScroll>
+    </div>
+  );
 }
