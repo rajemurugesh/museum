@@ -1,6 +1,8 @@
 {
-    "About us page": "صفحة من نحن",
-    "What is i18next?": "ما هو i18next؟",
-    "i18next is an internationalization framework that has been written for JavaScript.": "i18next هو إطار للتعدد الثقافات يمكن كتابته بلغة JavaScript."
-  }
+  "Select Museum:": "اختر المتحف:",
+  "Sharjah Museum of Islamic Civilization":"متحف الشارقة للحضارة الإسلامية",
+  "i18next is an internationalization framework that has been written for JavaScript. It provides a complete method for product localization as well as the other standard i18n features.":"i18next هو إطار عمل للتدويل تمت كتابته لجافا سكريبت. فهو يوفر طريقة كاملة لتوطين المنتج بالإضافة إلى ميزات i18n القياسية الأخرى.",
+  "Contact us page":"اتصل بنا الصفحة",
+  "What is i18next?":"ما هو i18next؟"
+}
   

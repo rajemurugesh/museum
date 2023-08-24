@@ -2,33 +2,32 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 
 const Header = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
   };
   return (
-    <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
+    <nav className="navbar navbar-expand-lg bg-light">
+  <div className="container-fluid">
     <img src="SMDlogo.jpg" alt="logo"/>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
        
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            select
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">english</a></li>
-            <li><a class="dropdown-item" href="#">Arabic</a></li>
-            <li><a class="dropdown-item" href="#">Russian</a></li>
+        
          
-        </ul>
+            <select onChange={(e) => changeLanguage(e.target.value)}>
+            <option value="en">English</option>
+        <option value="ar">Arabic</option>
+            </select>
+            
+         
+      
         </div>
         
-    </div>
+    
 
 </nav>
 
