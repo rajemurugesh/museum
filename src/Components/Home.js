@@ -18,7 +18,7 @@ const Home = () => {
     <div>
       <h4 className="text-center">Welcome to our Museum</h4>
      
-      <div className="d-grid gap-2 col-6 mx-auto">
+      <div className=" lg d-grid gap-4 col-6 mx-auto">
         <button className="btn btn-secondary" type="button" onClick={() => handleChangeLanguage('en')}>
           English
         </button>

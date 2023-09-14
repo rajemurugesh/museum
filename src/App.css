@@ -7,6 +7,44 @@
   pointer-events: none;
 }
 
+#light {
+  background-color: #f3ebf6;
+}
+
+#dark {
+  background-color: #46045e;
+  color: white;
+}
+
+#light .App {
+  background-color: #fff;
+  color: black;
+}
+
+#dark .App {
+  background-color: #38004c;
+}
+
+.switch {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch label {
+  margin: 10px;
+}
+
+#light .switch label {
+  color: black;
+}
+
+#dark .switch label {
+  color: white;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
