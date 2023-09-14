@@ -28,7 +28,7 @@ const About = () => {
               alt="sma1"
             />
             <div className="card-body">
-              <p className="card-text">{t('Sharjah Museum of Islamic Civilization')}</p>
+              <p className="card-text">{t('heading')}</p>
             </div>
           </Link>
         </div>
@@ -41,7 +41,7 @@ const About = () => {
               alt="museum "
             />
             <div className="card-body">
-              <p className="card-text">{t('Sharjah Museum of Islamic Civilization')}</p>
+              <p className="card-text">{t('heading')}</p>
             </div>
           </Link>
         </div>

@@ -25,6 +25,12 @@ const Home = () => {
         <button className="btn btn-secondary" type="button" onClick={() => handleChangeLanguage('ar')}>
         عربي
         </button>
+        <button className="btn btn-secondary" type="button" onClick={() => handleChangeLanguage('de')}>
+        Deutsch
+        </button>
+        <button className="btn btn-secondary" type="button" onClick={() => handleChangeLanguage('hi')}>
+        Hindi
+        </button>
       </div>
     </div>
   );

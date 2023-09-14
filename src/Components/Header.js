@@ -21,14 +21,10 @@ const Header = () => {
             <select onChange={(e) => changeLanguage(e.target.value)}>
             <option value="en">English</option>
         <option value="ar">Arabic</option>
+        <option value="de">German</option>
+        <option value="hi">Hindi</option>
             </select>
-            
-         
-      
         </div>
-        
-    
-
 </nav>
 
 
